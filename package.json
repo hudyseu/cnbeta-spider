@@ -10,6 +10,16 @@
     "NodeJs",
     "cnbeta"
   ],
+  "dependencies": {
+    "async": "^2.6.0",
+    "cheerio": "^1.0.0-rc.2",
+    "colors": "^1.2.5",
+    "iconv-lite": "^0.4.23",
+    "log4js": "^2.6.1",
+    "mongoose": "^5.1.1",
+    "request": "^2.86.0",
+    "q": "^1.5.1"
+  },
   "author": "hudingyu",
   "license": "ISC"
 }
