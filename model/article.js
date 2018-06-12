@@ -24,11 +24,11 @@ mongoose.Promise = q.Promise;
 var db=mongoose.connect(`mongodb://${config.originIp}:${config.localPort}/${config.db.articlelist}`);
 
 mongoose.connection.on("error", function (error) {
-    console.log("数据库连接失败：" + error);
+    console.log("database connnecting failed：" + error);
 });
 
 mongoose.connection.on("open", function () {
-    console.log("数据库连接成功");
+    console.log("database connnecting succeeded");
 });
 
 const articleArc = {
