@@ -111,6 +111,7 @@ const saveDB = async(result, callback) => {
     //console.log(result);
     let flag = await dbHelper.insertCollection(articleModel, result).catch(function (err){
         logger.error('data insert falied');
+        console.log(err);
     });
     if (!flag) {
         logger.error('news list save failed');
