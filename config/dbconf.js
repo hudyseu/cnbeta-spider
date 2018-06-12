@@ -4,7 +4,7 @@
  */
 module.exports = {
     localUrl: 'localhost',
-    originIp: '172.26.8.153',
+    originIp: '172.26.8.62',
     localPort: 27017,
     db: {
         articlelist: 'articleList'
