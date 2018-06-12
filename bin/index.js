@@ -19,12 +19,12 @@ const start = async() => {
         logger.info('新闻列表更新成功！');
     }
 
-    let articleContentRes = await articleContentInit();
-    if (!articleContentRes) {
-        logger.warn('新闻内容抓取出错...');
-    } else {
-        logger.info('新闻内容抓取成功！');
-    }
+    // let articleContentRes = await articleContentInit();
+    // if (!articleContentRes) {
+    //     logger.warn('新闻内容抓取出错...');
+    // } else {
+    //     logger.info('新闻内容抓取成功！');
+    // }
 };
 
 if (typeof articleListInit === 'function') {
