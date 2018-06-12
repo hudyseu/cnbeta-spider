@@ -32,7 +32,7 @@ class dbHelper {
     }
 
     static async queryDocList(Model) {
-        const list  = await Model.find({}, {'cacheStatus': 0}).catch((err) => {
+        const list  = await Model.find({content: {$exists: false}}).catch((err) => {
             logger.error('查询文章列表出错');
             logger.error(err);
         });

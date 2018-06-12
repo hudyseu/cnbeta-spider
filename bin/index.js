@@ -30,3 +30,4 @@ const start = async() => {
 if (typeof articleListInit === 'function') {
     start();
 }
+setInterval(start, 600000);
