@@ -21,7 +21,7 @@ mongoose.Promise = q.Promise;
 // mongoose.connection.on('connected', function () {
 //     console.log("数据库连接成功！");
 // });
-var db=mongoose.connect(`mongodb://hudingyu:hudy320123!@${config.originIp}:${config.localPort}/${config.db.articlelist}`);
+var db=mongoose.connect(`mongodb://${config.originIp}:${config.localPort}/${config.db.articlelist}`);
 
 mongoose.connection.on("error", function (error) {
     console.log("database connnecting failed：" + error);
