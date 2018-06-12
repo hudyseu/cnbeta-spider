@@ -14,16 +14,16 @@ const start = async() => {
     let articleListRes = await articleListInit();
     // console.log(articleListRes);
     if (!articleListRes) {
-        logger.warn('新闻列表更新失败...');
+        logger.warn('news list update failed...');
     } else {
-        logger.info('新闻列表更新成功！');
+        logger.info('news list update succeed！');
     }
 
     // let articleContentRes = await articleContentInit();
     // if (!articleContentRes) {
-    //     logger.warn('新闻内容抓取出错...');
+    //     logger.warn('article content grab error...');
     // } else {
-    //     logger.info('新闻内容抓取成功！');
+    //     logger.info('article content grab succeed！');
     // }
 };
 

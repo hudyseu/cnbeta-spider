@@ -20,7 +20,7 @@ const getPageUrlList = (listBaseUrl, totalPage) => {
  * @param {*} times
  */
 const sleep = async(times) => {
-    logger.info('当前爬虫自动休眠' + times + 'ms');
+    logger.info('crawler rests' + times + 'ms');
     await new Promise((resolve) => {
         setTimeout(resolve, times);
     });

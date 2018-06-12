@@ -38,7 +38,7 @@ const { articleArc, articleModel } = require('../model/article');
  * @returns {Promise.<*>}
  */
 const articleListInit = async() => {
-    logger.info('抓取文章列表开始...');
+    logger.info('grabbing article list starts...');
     const pageUrlList = getPageUrlList(listBaseUrl, totalPage);
     if (!pageUrlList) {
         return;
@@ -58,7 +58,7 @@ const getArticleList = (pageUrlList) => {
             getCurPage(pageUrl, callback);
         }, (err, result) => {
             if (err) {
-                logger.error('获取文章列表出错...');
+                logger.error('get article list error...');
                 logger.error(err);
                 reject(false);
                 return;
@@ -110,10 +110,10 @@ const getCurPage = async(pageUrl, callback) => {
 const saveDB = async(result, callback) => {
     //console.log(result);
     let flag = await dbHelper.insertCollection(articleModel, result).catch(function (err){
-        logger.error('数据插入失败');
+        logger.error('data insert falied');
     });
     if (!flag) {
-        logger.error('新闻列表保存失败！');
+        logger.error('news list save failed');
     } else {
         logger.info('列表保存成功！文章条数：' + result.length);
     }
