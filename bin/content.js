@@ -36,11 +36,11 @@ const {
  * @returns {Promise.<*>}
  */
 const articleContentInit = async() => {
-    logger.info('抓取文章内容开始...');
+    logger.info('grabbing article contents starts...');
     let uncachedArticleSidList = await getUncachedArticleList(articleModel);
     const res = await batchCrawlArticleContent(uncachedArticleSidList);
     if (!res) {
-        logger.error('抓取文章内容出错...');
+        logger.error('grabbing article contents went wrong...');
     }
     return res;
 };
@@ -69,7 +69,6 @@ const batchCrawlArticleContent = (list) => {
             getArticleContent(sid, callback);
         }, (err, result) => {
             if (err) {
-                logger.error('获取文章内容出错...');
                 logger.error(err);
                 reject(false);
                 return;
@@ -91,7 +90,7 @@ const getArticleContent = async(sid, callback) => {
     let url = contentBaseUrl + sid + '.htm';
     request(url, (err, response, body) => {
         if (err) {
-            logger.error('获取文章内容出错，文章url:' + url);
+            logger.error('grabbing article content went wrong，article url:' + url);
             callback(null, null);
             return;
         }
@@ -116,7 +115,7 @@ const getArticleContent = async(sid, callback) => {
 const saveContentToDB = (article) => {
     let flag = dbHelper.updateCollection(articleModel, article);
     if (flag) {
-        logger.info('文章内容抓取成功：' + article.sid);
+        logger.info('grabbing article content succeeded：' + article.sid);
     }
 };
 

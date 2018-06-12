@@ -80,7 +80,7 @@ const getCurPage = async(pageUrl, callback) => {
     await sleep(num);
     request(pageUrl, (err, response, body) => {
         if (err) {
-            logger.info('当前链接发生错误，url地址为:' + pageUrl);
+            logger.info('current url went wrong，url address:' + pageUrl);
             callback(null, null);
             return;
         } else {
@@ -111,12 +111,11 @@ const saveDB = async(result, callback) => {
     //console.log(result);
     let flag = await dbHelper.insertCollection(articleModel, result).catch(function (err){
         logger.error('data insert falied');
-        console.log(err);
     });
     if (!flag) {
         logger.error('news list save failed');
     } else {
-        logger.info('列表保存成功！文章条数：' + result.length);
+        logger.info('list saved！total：' + result.length);
     }
     if (typeof callback === 'function') {
         callback(true);
