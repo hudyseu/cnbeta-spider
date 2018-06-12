@@ -21,7 +21,7 @@ mongoose.Promise = q.Promise;
 // mongoose.connection.on('connected', function () {
 //     console.log("数据库连接成功！");
 // });
-var db=mongoose.connect(`mongodb://${config.localUrl}:${config.localPort}/${config.db.articlelist}`);
+var db=mongoose.connect(`mongodb://${config.originIp}:${config.localPort}/${config.db.articlelist}`);
 
 mongoose.connection.on("error", function (error) {
     console.log("数据库连接失败：" + error);
@@ -52,5 +52,5 @@ var Schema = mongoose.Schema;
 const articleMap = new Schema(articleArc);
 const articleModel = mongoose.model('Article', articleMap);
 // articleModel.collection.remove();
-articleModel.collection.createIndex({sid:1}, {unique:true});
+articleModel.collection.createIndex({sid:1}, {unique:true, dropDups:true});
 module.exports = { articleArc, articleModel };

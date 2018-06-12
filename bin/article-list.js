@@ -54,7 +54,7 @@ const articleListInit = async() => {
  */
 const getArticleList = (pageUrlList) => {
     return new Promise((resolve, reject) => {
-        async.mapLimit(pageUrlList, 3, (pageUrl, callback) => {
+        async.mapLimit(pageUrlList, 1, (pageUrl, callback) => {
             getCurPage(pageUrl, callback);
         }, (err, result) => {
             if (err) {
@@ -99,8 +99,6 @@ const getCurPage = async(pageUrl, callback) => {
             callback(null, null);
         }
     });
-    // let num = Math.random() * 1000 + 1000;
-    // await sleep(num);
 };
 
 /**
