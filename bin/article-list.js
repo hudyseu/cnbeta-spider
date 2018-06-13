@@ -27,7 +27,8 @@ const {
 const {
     sleep,
     getPageUrlList,
-    parseObject
+    parseObject,
+    mkDirs,
 } = require('../utils/utils');
 
 const dbHelper = require('../dbhelper/dbhelper');
@@ -64,6 +65,7 @@ const getArticleList = (pageUrlList) => {
                 return;
             }
             let articleList = _.flatten(result);
+            downloadThumb(articleList);
             saveDB(articleList, resolve);
         })
     })
@@ -100,6 +102,22 @@ const getCurPage = async(pageUrl, callback) => {
         }
     });
 };
+
+const downloadThumb = (list) => {
+    const host = 'https://static.cnbetacdn.com/';
+    list.forEach(item => {
+        let thumb_url = item.thumb;
+        thumb_url = thumb_url.replace(host, '');
+        item.thumb = thumb_url;
+        // console.log(thumb_url.substring(0, thumb_url.lastIndexOf('/')));
+        console.log(host + thumb_url);
+        mkDirs(thumb_url.substring(0, thumb_url.lastIndexOf('/')), () => {
+            request(img_src).pipe(fs.createWriteStream('./'+ img_filename));
+            request(host + thumb_url).pipe(fs.createWriteStream('./' + thumb_url));
+        });
+
+    })
+}
 
 /**
  * 将文章列表存入数据库
