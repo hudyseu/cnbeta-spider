@@ -19,12 +19,12 @@ const start = async() => {
         logger.info('news list update succeed！');
     }
 
-    // let articleContentRes = await articleContentInit();
-    // if (!articleContentRes) {
-    //     logger.warn('article content grab error...');
-    // } else {
-    //     logger.info('article content grab succeed！');
-    // }
+    let articleContentRes = await articleContentInit();
+    if (!articleContentRes) {
+        logger.warn('article content grab error...');
+    } else {
+        logger.info('article content grab succeed！');
+    }
 };
 
 if (typeof articleListInit === 'function') {

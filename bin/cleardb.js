@@ -1,15 +1,3 @@
-/**
- * @fileOverview
- * @name model/article.js
- * @author hudingyu <hudingyu@meituan.com>
- * @date 2018/5/17
- * @license MIT
- */
-
-/**
- * 文章相关
- * @type {*}
- */
 const mongoose = require("mongoose");
 const q = require('q');
 const config = require('../config/dbconf');
@@ -52,6 +40,4 @@ const articleArc = {
 var Schema = mongoose.Schema;
 const articleMap = new Schema(articleArc);
 const articleModel = mongoose.model('Article', articleMap);
-// articleModel.collection.remove();
-articleModel.collection.createIndex({sid:1}, {unique:true, dropDups:true});
-module.exports = { articleArc, articleModel };
+articleModel.collection.remove();

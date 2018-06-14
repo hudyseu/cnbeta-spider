@@ -75,23 +75,24 @@ function  mkdir(pos, dirArray, _callback){
         if(!exists){
             fs.mkdir(currentDir,function(err){
                 if(err){
-                    console.log('创建文件夹出错！'+ currentDir);
+                    // console.log(err);
+                    // console.log('创建文件夹出错！'+ currentDir);
                 }else{
-                    console.log(currentDir+'文件夹-创建成功！');
+                    // console.log(currentDir+'文件夹-创建成功！');
                     mkdir(pos+1,dirArray,_callback);
                 }
             });
         }else{
-            console.log(currentDir+'文件夹-已存在！');
+            // console.log(currentDir+'文件夹-已存在！');
             mkdir(pos+1,dirArray,_callback);
         }
     });
 }
 
 //创建目录结构
-function mkDirs(dirpath,_callback) {
+function mkDirs(dirpath, _callback) {
     var dirArray = dirpath.split('/');
-    fs.exists( dirpath ,function(exists){
+    fs.exists(dirpath ,function(exists){
         if(!exists){
             mkdir(0, dirArray,function(){
                  // console.log('文件夹创建完毕!准备写入文件!');

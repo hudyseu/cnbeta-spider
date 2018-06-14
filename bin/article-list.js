@@ -105,18 +105,19 @@ const getCurPage = async(pageUrl, callback) => {
 
 const downloadThumb = (list) => {
     const host = 'https://static.cnbetacdn.com/';
-    list.forEach(item => {
-        let thumb_url = item.thumb;
-        thumb_url = thumb_url.replace(host, '');
+    const basepath = './data/';
+    async.eachSeries(list, (item, callback) => {
+        let thumb_url = item.thumb.replace(host, '');
         item.thumb = thumb_url;
         // console.log(thumb_url.substring(0, thumb_url.lastIndexOf('/')));
-        console.log(host + thumb_url);
-        mkDirs(thumb_url.substring(0, thumb_url.lastIndexOf('/')), () => {
-            request(img_src).pipe(fs.createWriteStream('./'+ img_filename));
-            request(host + thumb_url).pipe(fs.createWriteStream('./' + thumb_url));
+        mkDirs(basepath + thumb_url.substring(0, thumb_url.lastIndexOf('/')), () => {
+            // request(img_src).pipe(fs.createWriteStream('./'+ img_filename));
+            console.log(host + thumb_url);
+            // console.log(host + thumb_url);
+            request(host + thumb_url).pipe(fs.createWriteStream(basepath + thumb_url));
+            callback(null, null);
         });
-
-    })
+    });
 }
 
 /**
