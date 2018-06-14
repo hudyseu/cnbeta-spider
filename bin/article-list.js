@@ -105,7 +105,7 @@ const getCurPage = async(pageUrl, callback) => {
 
 const downloadThumb = (list) => {
     const host = 'https://static.cnbetacdn.com/';
-    const basepath = './data/';
+    const basepath = '../../../../data/';
     async.eachSeries(list, (item, callback) => {
         let thumb_url = item.thumb.replace(host, '');
         item.thumb = thumb_url;
